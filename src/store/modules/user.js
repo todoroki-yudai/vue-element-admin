@@ -1,4 +1,5 @@
 import { loginByUsername, logout, getUserInfo } from '@/api/login'
+import { registerByUsername } from '@/api/register'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -51,6 +52,22 @@ const user = {
         loginByUsername(username, userInfo.password).then(response => {
           const data = response.data
           commit('SET_TOKEN', data.token)
+          setToken(data.token)
+          resolve()
+        }).catch(error => {
+          console.log(error)
+          reject(error)
+        })
+      })
+    },
+
+    // entry user
+    RegisterByUsername({ commit }, userInfo) {
+      const username = userInfo.username.trim()
+      return new Promise((resolve, reject) => {
+        registerByUsername(username, userInfo.password).then(response => {
+          const data = response.data
+          commit('SET_TOKEN', data.token)
           setToken(response.data.token)
           resolve()
         }).catch(error => {
@@ -68,7 +85,7 @@ const user = {
           }
           const data = response.data
           commit('SET_ROLES', data.roles)
-          commit('SET_NAME', data.name)
+          commit('SET_NAME', data.user_name)
           commit('SET_AVATAR', data.avatar)
           commit('SET_INTRODUCTION', data.introduction)
           resolve(response)
