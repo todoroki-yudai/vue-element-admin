@@ -1,5 +1,6 @@
 import { loginByUsername, logout, getUserInfo } from '@/api/login'
 import { registerByUsername } from '@/api/register'
+import { sendThankyou } from '@/api/transaction'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -71,6 +72,22 @@ const user = {
           setToken(response.data.token)
           resolve()
         }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    // send thank you point
+    SendThankyou({ commit }, postForm) {
+      // const username = userInfo.username.trim()
+      return new Promise((resolve, reject) => {
+        sendThankyou(
+          postForm.receiver_address, postForm.amount, postForm.message
+        ).then(response => {
+          console.log(response)
+          resolve()
+        }).catch(error => {
+          console.log(error)
           reject(error)
         })
       })
