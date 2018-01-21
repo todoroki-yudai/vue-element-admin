@@ -6,7 +6,7 @@ export function registerByUsername(username, password) {
     password
   }
   return request({
-    url: 'http://localhost:18080/api/v1.0/users/entry', // TODO: move base url to config
+    url: '/users/entry',
     method: 'post',
     data
   })
