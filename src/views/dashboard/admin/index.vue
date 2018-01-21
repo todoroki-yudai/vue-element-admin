@@ -8,40 +8,12 @@
       <line-chart :chart-data="lineChartData"></line-chart>
     </el-row>
 
-    <el-row :gutter="32">
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper">
-          <raddar-chart></raddar-chart>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper">
-          <pie-chart></pie-chart>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper">
-          <bar-chart></bar-chart>
-        </div>
-      </el-col>
-    </el-row>
-
-    <el-row :gutter="8">
-      <el-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 12}" :xl="{span: 12}" style="padding-right:8px;margin-bottom:30px;">
-        <transaction-table></transaction-table>
-      </el-col>
-      <el-col :xs="{span: 12}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 5}">
-        <todo-list></todo-list>
-      </el-col>
-      <el-col :xs="{span: 12}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 5}">
-        <box-card></box-card>
-      </el-col>
-    </el-row>
-
   </div>
 </template>
 
 <script>
+// import moment from 'moment'
+
 import GithubCorner from '@/components/GithubCorner'
 import PanelGroup from './components/PanelGroup'
 import LineChart from './components/LineChart'
@@ -52,24 +24,20 @@ import TransactionTable from './components/TransactionTable'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
 
-const lineChartData = {
-  newVisitis: {
-    expectedData: [100, 120, 161, 134, 105, 160, 165],
-    actualData: [120, 82, 91, 154, 162, 140, 145]
-  },
-  messages: {
-    expectedData: [200, 192, 120, 144, 160, 130, 140],
-    actualData: [180, 160, 151, 106, 145, 150, 130]
-  },
-  purchases: {
-    expectedData: [80, 100, 121, 104, 105, 90, 100],
-    actualData: [120, 90, 100, 138, 142, 130, 130]
-  },
-  shoppings: {
-    expectedData: [130, 140, 141, 142, 145, 150, 160],
-    actualData: [120, 82, 91, 154, 162, 140, 130]
-  }
-}
+// const lineChartData = {
+//   balances: {
+//     expectedData: [100, 120, 161, 134, 105, 160, 165],
+//     actualData: [120, 82, 91, 154, 162, 140, 145]
+//   },
+//   messages: {
+//     expectedData: [200, 192, 120, 144, 160, 130, 140],
+//     actualData: [180, 160, 151, 106, 145, 150, 130]
+//   },
+//   purchases: {
+//     expectedData: [80, 100, 121, 104, 105, 90, 100],
+//     actualData: [120, 90, 100, 138, 142, 130, 130]
+//   }
+// }
 
 export default {
   name: 'dashboard-admin',
@@ -86,12 +54,42 @@ export default {
   },
   data() {
     return {
-      lineChartData: lineChartData.newVisitis
+      // lineChartData: lineChartData.balances
+      lineChartData: {
+        expectedData: [],
+        actualData: []
+      }
     }
+  },
+  created() {
+    this.handleChartData()
   },
   methods: {
     handleSetLineChartData(type) {
-      this.lineChartData = lineChartData[type]
+      this.handleChartData(type)
+      // this.lineChartData = lineChartData[type]
+    },
+    handleChartData(type) {
+      // TODO: change get data by type
+      this.loading = true
+      this.$store.dispatch('FetchUserBalanceList', {
+        starting_date: '2017-12-13',
+        end_date: '2018-01-12'
+      }).then((res) => {
+        this.loading = false
+        console.log(res.data)
+        const dataValues = []
+        res.data.forEach(function(item) {
+          dataValues.push(item.balance)
+        })
+        this.lineChartData = {
+          expectedData: dataValues,
+          actualData: dataValues
+        }
+      }).catch((e) => {
+        this.loading = false
+        console.log(e)
+      })
     }
   }
 }

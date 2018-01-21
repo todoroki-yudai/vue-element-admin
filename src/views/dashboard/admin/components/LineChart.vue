@@ -5,7 +5,8 @@
 <script>
 import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
-import { debounce } from '@/utils'
+import moment from 'moment'
+import { debounce, range } from '@/utils'
 
 export default {
   props: {
@@ -45,7 +46,6 @@ export default {
       window.addEventListener('resize', this.__resizeHanlder)
     }
 
-    // 监听侧边栏的变化
     const sidebarElm = document.getElementsByClassName('sidebar-container')[0]
     sidebarElm.addEventListener('transitionend', this.__resizeHanlder)
   },
@@ -73,9 +73,19 @@ export default {
   },
   methods: {
     setOptions({ expectedData, actualData } = {}) {
+      // TODO: now a month term, but have to adjust term
+      const TERM = process.env.DASHBOARD_CHART_DEFAULT_TERM
+      const now = moment()
+      let startDate = now.add(TERM * -1, 'days')
+      const dateRange = []
+      range(TERM).forEach(function(num) {
+        dateRange.push(startDate.format('YYYY-MM-DD'))
+        startDate = startDate.add(1, 'days')
+      })
       this.chart.setOption({
         xAxis: {
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: dateRange,
           boundaryGap: false,
           axisTick: {
             show: false
@@ -143,6 +153,7 @@ export default {
     },
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
+      // console.log(this.chartData)
       this.setOptions(this.chartData)
     }
   }

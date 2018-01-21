@@ -265,3 +265,5 @@ export function deepClone(source) {
   }
   return targetObj
 }
+
+export function range(n) { return [...Array(n).keys()] }
