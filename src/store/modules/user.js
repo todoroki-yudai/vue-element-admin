@@ -1,8 +1,8 @@
-import { loginByUsername, logout, getUserInfo } from '@/api/login'
+import { loginByUsername, getUserInfo } from '@/api/login'
 import { registerByUsername } from '@/api/register'
 import { sendThankyou } from '@/api/transaction'
 import { fetchUserBalanceList, getUserBalance } from '@/api/user'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getToken, setToken } from '@/utils/auth'
 
 const user = {
   state: {
