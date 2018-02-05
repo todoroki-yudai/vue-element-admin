@@ -9,11 +9,13 @@ export function fetchList(query) {
 }
 
 export function sendThankyou(receiver_address, amount, message) {
-  // TODO: use mosaic
+  // TODO: write usemosaic to config file
+  const usemosaic = 'true'
   const data = {
     receiver_address,
     amount,
-    message
+    message,
+    usemosaic
   }
   return request({
     url: '/thanks/send',

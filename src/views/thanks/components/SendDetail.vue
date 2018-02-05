@@ -5,8 +5,16 @@
       <div class="createPost-main-container">
         <el-row>
           <el-col>
+            <span>My Peace Coin Balance : {{balance}}</span>
+          </el-col>
+        </el-row>
+
+        <hr>
+
+        <el-row>
+          <el-col>
             <el-tooltip class="item" effect="dark" content="Input Receiver Address" placement="top">
-              <el-form-item label-width="150px" label="Receiver Address:" class="postInfo-container-item">
+              <el-form-item label-width="150px" label="Receiver Address:" class="postInfo-container-item" prop="reciever_address">
                 <el-input placeholder="Input Receiver Address" style='min-width:150px;' v-model="postForm.receiver_address">
                 </el-input>
               </el-form-item>
@@ -17,9 +25,9 @@
         <el-row>
           <el-col>
             <el-tooltip class="item" effect="dark" content="Input Amount" placement="top">
-              <el-form-item label-width="150px" label="Amount:" class="postInfo-container-item">
-                <el-input placeholder="Input Amount" style='min-width:150px;' v-model="postForm.amount">
-                </el-input>
+              <el-form-item label-width="150px" label="Amount:" class="postInfo-container-item" prop="amount">
+                <el-input-number placeholder="Input Amount" style='min-width:150px;' v-model="postForm.amount">
+                </el-input-number>
               </el-form-item>
             </el-tooltip>
           </el-col>
@@ -28,7 +36,7 @@
         <el-row>
           <el-col>
             <el-tooltip class="item" effect="dark" content="Input Message" placement="top">
-              <el-form-item label-width="150px" label="Message:" class="postInfo-container-item">
+              <el-form-item label-width="150px" label="Message:" class="postInfo-container-item" prop="message">
                 <el-input placeholder="Input Message" style='min-width:150px;' v-model="postForm.message">
                 </el-input>
               </el-form-item>
@@ -64,7 +72,7 @@ import Multiselect from 'vue-multiselect'// 使用的一个多选框组件，ele
 import 'vue-multiselect/dist/vue-multiselect.min.css'// 多选框组件css
 import Sticky from '@/components/Sticky' // 粘性header组件
 // import { validateURL } from '@/utils/validate'
-import { fetchArticle } from '@/api/article'
+// import { fetchArticle } from '@/api/article'
 import { userSearch } from '@/api/remoteSearch'
 
 const defaultForm = {
@@ -95,21 +103,39 @@ export default {
   },
   data() {
     const validateRequire = (rule, value, callback) => {
-      console.log('!!!!!!!!!!! check Required')
+      // console.log(rule)
+      // console.log('!!!!!!!!!!! check Required')
+      // console.log(value)
       if (value === '') {
+        const errMsg = rule.field + ' is required'
         this.$message({
-          message: rule.field + 'required',
+          message: errMsg,
           type: 'error'
         })
-        callback(null)
+        callback(errMsg)
       } else {
         callback()
       }
     }
+    const validateBalance = (rule, value, callback) => {
+      const valueInt = parseInt(value)
+      if (valueInt === 0 || this.balance >= valueInt) {
+        const errMsg = 'Insufficient funds'
+        this.$message({
+          message: errMsg,
+          type: 'error'
+        })
+        callback(errMsg)
+      } else {
+        callback()
+      }
+    }
+
     return {
       postForm: Object.assign({}, defaultForm),
       fetchSuccess: true,
       loading: false,
+      balance: 0,
       userLIstOptions: [],
       platformsOptions: [
         { key: 'a-platform', name: 'a-platform' },
@@ -118,7 +144,7 @@ export default {
       ],
       rules: {
         reciever_address: [{ validator: validateRequire }],
-        amount: [{ validator: validateRequire }]
+        amount: [{ validator: validateRequire, validateBalance }]
         // source_uri: [{ validator: validateSourceUri, trigger: 'blur' }]
       }
     }
@@ -129,19 +155,19 @@ export default {
     }
   },
   created() {
-    if (this.isEdit) {
-      this.fetchData()
-    } else {
-      this.postForm = Object.assign({}, defaultForm)
-    }
+    this.fetchData()
+    this.postForm = Object.assign({}, defaultForm)
   },
   methods: {
     fetchData() {
-      fetchArticle().then(response => {
-        this.postForm = response.data
-      }).catch(err => {
-        this.fetchSuccess = false
-        console.log(err)
+      this.loading = true
+      this.$store.dispatch('GetUserInfo').then((res) => {
+        this.loading = false
+        // console.log(res.data)
+        this.balance = res.data.balance
+      }).catch((e) => {
+        this.loading = false
+        console.log(e)
       })
     },
     submitForm() {
@@ -164,7 +190,7 @@ export default {
             this.loading = false
           })
         } else {
-          console.log('error submit!!')
+          console.log('validation error !!')
           return false
         }
       })
