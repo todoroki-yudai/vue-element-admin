@@ -1,8 +1,8 @@
-import { loginByUsername, getUserInfo } from '@/api/login'
+import { loginByUsername, logout, getUserInfo } from '@/api/login'
 import { registerByUsername } from '@/api/register'
 import { sendThankyou } from '@/api/transaction'
 import { fetchUserBalanceList, getUserBalance } from '@/api/user'
-import { getToken, setToken } from '@/utils/auth'
+import { getToken, removeToken, setToken } from '@/utils/auth'
 
 const user = {
   state: {
@@ -132,7 +132,7 @@ const user = {
           reject(error)
         })
       })
-    }
+    },
 
     // 第三方验证登录
     // LoginByThirdparty({ commit, state }, code) {
@@ -148,19 +148,18 @@ const user = {
     //   })
     // },
 
-    // 登出
-    // LogOut({ commit, state }) {
-    //   return new Promise((resolve, reject) => {
-    //     logout(state.token).then(() => {
-    //       commit('SET_TOKEN', '')
-    //       commit('SET_ROLES', [])
-    //       removeToken()
-    //       resolve()
-    //     }).catch(error => {
-    //       reject(error)
-    //     })
-    //   })
-    // },
+    LogOut({ commit, state }) {
+      return new Promise((resolve, reject) => {
+        logout(state.token).then(() => {
+          commit('SET_TOKEN', '')
+          commit('SET_ROLES', [])
+          removeToken()
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    }
 
     // 前端 登出
     // FedLogOut({ commit }) {
