@@ -1,0 +1,1198 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline
+}
+
+html {
+  line-height: 1
+}
+
+ol, ul {
+  list-style: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle
+}
+
+q, blockquote {
+  quotes: none
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none
+}
+
+a img {
+  border: none
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block
+}
+
+.clearfix, .l-twoClumn, .list_selector {
+  *zoom: 1
+}
+
+.clearfix:after, .l-twoClumn:after, .list_selector:after {
+  content: "";
+  display: table;
+  clear: both
+}
+
+html, body {
+  height: 100%
+}
+
+body {
+  font-size: 62.5%;
+  color: #1C1C1C;
+  font-family: "游ゴシック", YuGothic, "Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  background: #FBFBFB url(/static/img/side_bg.jpg) repeat scroll
+}
+
+body.logined {
+  background-attachment: fixed
+}
+
+div {
+  position: relative
+}
+
+a {
+  color: #0071BC;
+  text-decoration: none
+}
+
+.textLink:hover {
+  text-decoration: underline
+}
+
+img {
+  max-width: 100%;
+  height: auto
+}
+
+input, button, textarea, select {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0
+}
+
+input[type="number"] {
+  -moz-appearance: textfield
+}
+
+input[type="text"], input[type="password"], input[type="url"], input[type="email"], input[type="tel"], input[type="number"], textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid #f5f5f5;
+  padding: 0.8em 0.8em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 16px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="url"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="number"]:focus, textarea:focus {
+  border-color: #6cc2e0;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2)
+}
+
+.is-err input[type="text"], .is-err input[type="password"], .is-err input[type="url"], .is-err input[type="email"], .is-err input[type="tel"], .is-err input[type="number"], .is-err textarea {
+  border-color: #FF8116
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 1.2em;
+  font-weight: bold
+}
+
+.form-group--checkbox-signUp label {
+  display: inline-block;
+  font-size: 1.3em;
+  font-weight: normal;
+  cursor: pointer;
+  margin-bottom: 0
+}
+
+#sideContent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  z-index: 100;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 40px 0
+}
+
+#mainContent {
+  margin-left: 300px;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 45px 50px 90px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff
+}
+
+.transactionHistory #mainContent {
+  padding-bottom: 132px
+}
+
+.no-login #mainContent, .hp #mainContent {
+  margin: 0 auto;
+  background-color: transparent;
+  padding-top: 55px;
+  padding-bottom: 278px
+}
+
+.no-login #mainContent {
+  padding-top: 55px;
+  padding-bottom: 278px
+}
+
+.hp #mainContent {
+  padding-top: 115px;
+  padding-bottom: 278px
+}
+
+#header .logo {
+  max-width: 390px;
+  margin: 0 auto
+}
+
+.peaceWallet #header .logo {
+  max-width: 145px
+}
+
+#footer {
+  /* position: absolute; */
+  z-index: 100;
+  background-color: #fff;
+  width: 100%;
+  top: 20px;
+  left: 0;
+  bottom: 0
+}
+
+#footer .text-credit {
+  text-align: center;
+  height: 108px;
+  line-height: 108px
+}
+
+#pageContent {
+  z-index: 1
+}
+
+.no-login #pageContent {
+  max-width: 420px;
+  margin: 40px auto 0
+}
+
+.hp.home #pageContent {
+  max-width: 900px;
+  margin: 0 auto 0
+}
+
+.l-header_sideContent .logo {
+  width: 66px
+}
+
+.l-selector {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  z-index: 20
+}
+
+.l-sec {
+  margin-top: 34px
+}
+
+.l-sec.sec_totalCoin .btn {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  z-index: 20
+}
+
+.l-sec.sec_totalCoin_transactionHistory {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  z-index: 50
+}
+
+.l-sec.sec_btnSet-sendCoin {
+  margin-top: 40px
+}
+
+.l-sec.sec_btnSet-login .links {
+  font-size: 1.2em;
+  padding-right: 120px;
+  z-index: 1;
+  line-height: 2
+}
+
+.l-sec.sec_btnSet-login .links a {
+  display: inline-block
+}
+
+.l-sec.sec_formItems-forgot {
+  margin-top: 20px
+}
+
+.home.hp .l-sec {
+  margin-top: 40px
+}
+
+.home.peaceWallet .l-sec {
+  margin-top: 57px
+}
+
+.l-titleSet_sec .date {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  z-index: 10
+}
+
+.l-titleSet_sec.titleSet_sec_formFinish-signUp .obj {
+  margin: 0 auto
+}
+
+.titleSet_sec_formFinish .obj {
+  width: 76px;
+  height: 76px
+}
+
+.titleSet_sec_formFinish .title_formFinish-sendCoin {
+  left: 91px;
+  top: 0;
+  line-height: 76px
+}
+
+.l-content_sec {
+  margin: 0 auto;
+  position: relative
+}
+
+.l-content_sec.content_sec_myAddress .text-mes {
+  font-size: 1.2em;
+  padding-bottom: 32px;
+  margin-bottom: 38px;
+  border-bottom: 1px solid #ddd
+}
+
+.l-content_sec.content_sec_myAddress .obj {
+  width: 120px
+}
+
+.l-content_sec.content_sec_myAddress .text-my-address {
+  margin-top: 26px;
+  font-size: 1.1em;
+  color: #8D8D8D
+}
+
+.l-content_sec.content_sec_btnSet-login {
+  padding-top: 10px
+}
+
+.sec_contributionRate .l-content_sec {
+  max-width: 600px
+}
+
+.content_sec_formFinish .text-mes {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #8D8D8D;
+  margin-top: 10px
+}
+
+.content_sec_formFinish-signUp .text-mes {
+  text-align: center
+}
+
+.content_sec_hp-vision p {
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 2em;
+  margin-top: 29px
+}
+
+.l-footer_sec {
+  margin-top: 20px
+}
+
+.footer_sec_formFinish-signUp .main {
+  display: inline-block
+}
+
+.footer_sec_formFinish-signUp .sub {
+  display: none
+}
+
+.footer_sec_formFinish-signUp, .footer_sec_hp-vision {
+  text-align: center
+}
+
+.footer_sec_hp-vision {
+  margin-top: 40px
+}
+
+.l-twoClumn__item {
+  float: left;
+  width: 50%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.l-twoClumn__item-l {
+  padding-right: 22px
+}
+
+.l-twoClumn__item-l .date {
+  right: 34px
+}
+
+.l-twoClumn__item-r {
+  padding-left: 22px
+}
+
+#myChart {
+  height: 300px
+}
+
+#myChart2 {
+  height: 360px
+}
+
+#myChart2b {
+  height: auto;
+  width: 100%
+}
+
+.sec_contributionRate .coin {
+  position: absolute;
+  top: 8px
+}
+
+.sec_amount-sendCoin .coin {
+  position: absolute;
+  top: 16px;
+  right: 0
+}
+
+.coin--total {
+  line-height: 66px;
+  height: 66px;
+  padding: 0 32px;
+  z-index: 1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #EEF6FC
+}
+
+.coin--total-history {
+  margin-left: 300px;
+  text-align: right;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px
+}
+
+.coin--history {
+  position: absolute
+}
+
+.list_transactionHistory--header .coin--history {
+  left: 116px;
+  top: 50%;
+  transform: translate(0%, -50%)
+}
+
+.list_transactionHistory--content .coin--history {
+  right: 0;
+  top: 50%;
+  transform: translate(0%, -50%);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: 16px
+}
+
+.coin--debit {
+  color: #277797
+}
+
+.coin--credit {
+  color: #FF8116
+}
+
+.coin__num {
+  font-size: 2em;
+  font-weight: bold
+}
+
+.coin__num-history {
+  font-size: 1.5em
+}
+
+.coin__unit {
+  font-size: 1.4em;
+  display: inline-block;
+  margin-left: 8px
+}
+
+.sec_amount .coin__unit {
+  font-size: 1.2em
+}
+
+.coin__unit-history {
+  font-size: 1.2em;
+  margin-left: 7px;
+  color: #1C1C1C
+}
+
+.coin__symbol {
+  font-size: 1.5em;
+  display: inline-block;
+  width: 20px;
+  text-align: center
+}
+
+.title_main {
+  font-size: 2em
+}
+
+.title_main--noLogin {
+  text-align: center
+}
+
+.title_sec {
+  height: 31px;
+  line-height: 31px;
+  padding: 0 15px;
+  z-index: 1;
+  margin-bottom: 37px;
+  border-radius: 3px;
+  font-size: 1.2em
+}
+
+.sendPeaceCoin .title_sec {
+  margin-bottom: 24px
+}
+
+.title_sec-hp-vision {
+  font-size: 2.2em;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center
+}
+
+.title_formFinish {
+  font-size: 2em;
+  font-weight: bold
+}
+
+.title_formFinish-sendCoin {
+  position: absolute
+}
+
+.title_formFinish-signUp {
+  text-align: center;
+  margin-top: 12px
+}
+
+.date--history {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0%, -50%);
+  font-size: 1.1em;
+  padding-left: 16px;
+  max-width: 116px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.date--cl-1 {
+  color: #8D8D8D
+}
+
+.date--size-1 {
+  height: 31px;
+  line-height: 31px
+}
+
+.list_selector {
+  font-size: 1.2em
+}
+
+.list_selector__item {
+  position: relative;
+  float: left;
+  margin-left: 26px
+}
+
+.list_selector__item svg {
+  width: 10px;
+  height: 13px;
+  margin-right: 9px;
+  margin-top: -3px;
+  vertical-align: middle
+}
+
+.list_selector__item_lang svg {
+  margin-top: 0px
+}
+
+.list_selector__item-show {
+  cursor: pointer
+}
+
+.list_selector__item-show:hover {
+  text-decoration: underline
+}
+
+.list_selector__item-hide {
+  position: absolute;
+  top: 23px;
+  right: 0;
+  width: 134px;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out
+}
+
+.is-hide .list_selector__item-hide {
+  opacity: 0;
+  visibility: hidden
+}
+
+.list_selector__item-hide li {
+  font-size: 1.1em
+}
+
+.list_selector__item-hide .text {
+  padding: 10px 18px;
+  display: block
+}
+
+.list_selector__item-hide li a {
+  color: #1C1C1C
+}
+
+.list_selector__item-hide li a:hover {
+  background-color: #EEF6FC
+}
+
+.list_selector__item-hide .current {
+  font-weight: bold
+}
+
+.menu_peaceWallet {
+  text-transform: capitalize;
+  line-height: 1;
+  margin-top: 35px
+}
+
+.menu_peaceWallet__title {
+  font-size: 1.6em
+}
+
+.menu_peaceWallet__list {
+  font-size: 1.5em
+}
+
+.menu_peaceWallet__item {
+  margin-top: 35px
+}
+
+.menu_peaceWallet__item a {
+  color: #1C1C1C;
+  text-decoration: none
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-transition: all .2s;
+  transition: all .2s
+}
+
+.btn--cl-1 {
+  background-color: #277797;
+  color: #fff
+}
+
+.btn--cl-1:hover {
+  background-color: #278DC0
+}
+
+.btn--size-1 {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 35px;
+  font-size: 1.4em;
+  overflow: hidden
+}
+
+.sec_totalCoin .btn--size-1 {
+  padding: 0 16px
+}
+
+.btn--size-2 {
+  height: 56px;
+  line-height: 56px;
+  width: 189px;
+  padding: 0;
+  font-size: 1.4em;
+  text-align: center
+}
+
+.title_sec {
+  background-color: #f3f3f3
+}
+
+.links--sec_amount {
+  font-size: 1.3em;
+  margin-top: 15px
+}
+
+.graph--contributionRate {
+  margin-left: 92px;
+  height: 360px
+}
+
+.graph--contributionRate-b {
+  margin-left: 0;
+  display: none
+}
+
+.graph--amount {
+  margin-top: 30px;
+  margin-right: 0px
+}
+
+.obj_btn_pm {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(180deg);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+  transition: 0.4s cubic-bezier(0.2, 0.6, 0.3, 1.1)
+}
+
+.is-close .obj_btn_pm {
+  transform: translate(-50%, -50%) rotate(0deg);
+  background: transparent
+}
+
+.obj_btn_pm:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 1px;
+  width: 100%;
+  background: #1C1C1C
+}
+
+.obj_btn_pm:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 0px;
+  background: #1C1C1C
+}
+
+.is-close .obj_btn_pm:before {
+  width: 1px
+}
+
+.list_transactionHistory--item {
+  border-top: 1px solid #ddd
+}
+
+.list_transactionHistory--item:first-child {
+  border-top: none
+}
+
+.list_transactionHistory--header {
+  height: 42px;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  background-color: #EEF6FC
+}
+
+.is-close .list_transactionHistory--header {
+  background: transparent
+}
+
+.is-close .list_transactionHistory--header:hover {
+  background-color: #EEF6FC
+}
+
+.list_transactionHistory--content {
+  border-top: 1px solid #ddd;
+  overflow: hidden;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear
+}
+
+.is-close .list_transactionHistory--content.theme-is-close {
+  border: 0 solid #ddd;
+  visibility: hidden;
+  opacity: 0;
+  line-height: 0
+}
+
+.list_transactionHistory_date--item {
+  position: relative;
+  height: 70px;
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+  -webkit-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out
+}
+
+.list_transactionHistory_date--item:last-child {
+  border: none
+}
+
+.is-close .list_transactionHistory_date--item {
+  border: 0 solid #ddd;
+  height: 0
+}
+
+.list_transactionHistory_date--item>p {
+  position: absolute
+}
+
+.list_transactionHistory .wrap-obj_btn_pm {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 14px;
+  height: 14px
+}
+
+.list_transactionHistory_date--item .label {
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  max-width: 50%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 16px
+}
+
+.label--people {
+  font-size: 1.3em
+}
+
+.label--rate span {
+  font-size: 1.1em;
+  display: inline-block;
+  color: #fff;
+  background-color: #8CC63F;
+  padding: 6px;
+  border-radius: 3px
+}
+
+.label--rate-message span {
+  background-color: #FF727D
+}
+
+.header_form {
+  margin-top: 13px
+}
+
+.header_form p {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #8D8D8D;
+  text-align: center;
+  line-height: 1.5em
+}
+
+.sec_formItems .form-group {
+  margin-top: 34px
+}
+
+.sec_formItems .form-group:first-child {
+  margin-top: 0
+}
+
+.form-group--text-sendCoin {
+  max-width: 421px;
+  padding-right: 37px
+}
+
+.form-group--textArea-sendCoin {
+  max-width: 595px
+}
+
+.form-group--btn {
+  text-align: center
+}
+
+.form-group--btn-sendCoin {
+  text-align: left
+}
+
+.form-group--btn-login {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10
+}
+
+.form-group--checkbox-signUp label {
+  margin-top: 12px
+}
+
+.form-group--checkbox-signUp input {
+  display: none
+}
+
+.form-group--checkbox-signUp input~.fa-check-square-o {
+  display: none
+}
+
+.form-group--checkbox-signUp input:checked~.fa-check-square-o {
+  display: inline-block
+}
+
+.form-group--checkbox-signUp input:checked~.fa-square-o {
+  display: none
+}
+
+.form-group--checkbox-signUp .fa {
+  font-size: 17px;
+  width: 20px;
+  vertical-align: middle
+}
+
+.form-group--checkbox-signUp .fa.fa-square-o {
+  color: #8D8D8D
+}
+
+.form-group--checkbox-signUp.is-err .fa-square-o {
+  color: #FF8116 !important
+}
+
+.form-group .text-help {
+  margin-top: 8px;
+  display: none
+}
+
+.form-group .text-err {
+  margin-top: 8px
+}
+
+#auto-complete-address {
+  margin-right: 37px;
+  padding-right: 0
+}
+
+#auto-complete-address.to-group input {
+  color: #7FB8DD;
+  background-color: #EEF6FC;
+  border-color: #EEF6FC
+}
+
+.hideList_form {
+  position: absolute;
+  top: 48px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 10;
+  display: none
+}
+
+#auto-complete-address input+.hideList_form {
+  display: none
+}
+
+#auto-complete-address input:focus+.hideList_form {
+  display: block
+}
+
+.hideList_form__list {
+  display: block;
+  border: 1px solid #f5f5f5;
+  border-radius: 3px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.1)
+}
+
+.hideList_form__item {
+  display: block;
+  height: 33px;
+  line-height: 33px;
+  padding: 0 18px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all .2s
+}
+
+.hideList_form__item svg {
+  width: 10px;
+  height: 13px;
+  margin-right: 9px;
+  margin-top: -4px;
+  vertical-align: middle
+}
+
+.hideList_form__item:hover {
+  background: #EEF6FC
+}
+
+.scroll_area--signUp {
+  background-color: #FFFAEA;
+  height: 150px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-y: auto
+}
+
+.scroll_area--signUp .scroll_area-content {
+  padding: 17px 15px
+}
+
+.scroll_area--signUp .scroll_area-content h3 {
+  font-weight: bold;
+  margin-bottom: 1em
+}
+
+.scroll_area--signUp .scroll_area-content p {
+  line-height: 1.5
+}
+
+.text-err {
+  color: #FF8116;
+  display: none
+}
+
+.is-err .text-err {
+  display: block
+}
+
+#drawerContent {
+  z-index: 200;
+  display: none
+}
+
+.drawer-overlay {
+  z-index: 150
+}
+
+.drawer-nav {
+  background: #FBFBFB url(/static/img/side_bg.jpg) repeat scroll
+}
+
+.drawer-menu {
+  padding: 55px 40px !important
+}
+
+.drawer-hamburger {
+  width: 30px;
+  padding: 15px 15px 25px
+}
+
+.drawer-hamburger-icon, .drawer-hamburger-icon::after, .drawer-hamburger-icon::before {
+  height: 3px
+}
+
+.drawer--left.drawer-open .drawer-hamburger {
+  left: 0
+}
+
+.is-bold {
+  font-weight: bold
+}
+
+.is-alignR {
+  text-align: right
+}
+
+@media only screen and (max-width: 960px) {
+  #sideContent {
+    display: none
+  }
+  #drawerContent {
+    display: block
+  }
+  #mainContent {
+    margin-left: 0;
+    padding: 15px 15px 90px
+  }
+  .hp.home #mainContent {
+    padding-top: 58px
+  }
+  .l-selector {
+    top: 20px;
+    right: 15px
+  }
+  .list_selector__item {
+    margin-left: 15px
+  }
+  .list_selector__item svg {
+    margin-right: 7px
+  }
+  .list_selector__item-hide .text {
+    padding: 14px 18px
+  }
+  #header .logo {
+    max-width: 257px
+  }
+  #pageContent {
+    padding-top: 75px
+  }
+  .no-login #pageContent {
+    padding-top: 0;
+    margin-top: 30px
+  }
+  .l-twoClumn__item {
+    float: none;
+    width: 100%;
+    padding: 0
+  }
+  .l-twoClumn__item-l .date {
+    right: 12px
+  }
+  .l-sec.sec_totalCoin .btn {
+    padding: 0 25px
+  }
+  .l-sec.sec_totalCoin .btn .add {
+    display: none
+  }
+  .sec_contributionRate .coin {
+    position: relative;
+    margin-bottom: 21px;
+    padding: 0 20px
+  }
+  .peaceWallet.home .coin {
+    padding: 0 8px
+  }
+  .coin--total {
+    padding: 0 15px !important
+  }
+  .coin--total-history {
+    margin: 0
+  }
+  .l-content_sec.content_sec_myAddress .obj {
+    margin: 0 auto
+  }
+  .l-content_sec.content_sec_myAddress .text-my-address {
+    text-align: center
+  }
+  .graph--contributionRate {
+    height: 320px
+  }
+  .graph--contributionRate-a {
+    display: none
+  }
+  .graph--contributionRate-b {
+    display: block
+  }
+  .content_sec_formFinish .text-mes {
+    margin-top: 10px;
+    text-align: center
+  }
+  .footer_sec_formFinish-sendCoin {
+    text-align: center
+  }
+  .footer_sec_formFinish-signUp .main {
+    display: none
+  }
+  .footer_sec_formFinish-signUp .sub {
+    display: inline-block
+  }
+  .title_formFinish-sendCoin {
+    position: relative;
+    margin-top: 12px
+  }
+  .titleSet_sec_formFinish .title_formFinish-sendCoin {
+    left: auto;
+    top: auto;
+    line-height: 1;
+    text-align: center
+  }
+  .titleSet_sec_formFinish .obj {
+    margin: 0 auto
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .l-sec.sec_totalCoin_transactionHistory {
+    width: 100%
+  }
+}

@@ -1,71 +1,77 @@
 <template>
-  <div class="login-container">
-    <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
-      <div class="title-container">
-        <h3 class="title">{{$t('login.title')}}</h3>
-        <lang-select class="set-language"></lang-select>
-      </div>
-      <el-form-item prop="username">
-        <span class="svg-container svg-container_login">
-          <svg-icon icon-class="user" />
-        </span>
-        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="username" />
-      </el-form-item>
+  <div id="pageContent" class="mainContent">
 
-      <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon icon-class="password" />
-        </span>
-        <el-input name="password" :type="passwordType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="password" />
-        <span class="show-pwd" @click="showPwd">
-          <svg-icon icon-class="eye" />
-        </span>
-      </el-form-item>
+    <lang></lang>
 
-      <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
+    <div id="header">
+      <logo-header></logo-header>
+    </div>
 
-      <div class="tips">
-        <span>{{$t('login.username')}} : admin</span>
-        <span>{{$t('login.password')}} : {{$t('login.any')}}</span>
-      </div>
-      <div class="tips">
-        <span style="margin-right:18px;">{{$t('login.username')}} : editor</span>
-        <span>{{$t('login.password')}} : {{$t('login.any')}}</span>
-      </div>
-
-      <el-button class="thirdparty-button" type="primary" @click="showDialog=true">{{$t('login.thirdparty')}}</el-button>
-    </el-form>
-
-    <el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog">
-      {{$t('login.thirdpartyTips')}}
-      <br/>
-      <br/>
-      <br/>
-      <social-sign />
-    </el-dialog>
-
+    <div>
+      <h1 class="title_main title_main--noLogin is-bold">Login</h1>
+      <!-- <form id="form_login"> -->
+      <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
+        <div class="l-sec sec_formItems sec_formItems-login">
+          <div class="l-content_sec">
+            <div class="form-group form-group--text form-group--text-login">
+              <label>User Name</label>
+              <el-form-item prop="username">
+                <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="username" />
+              </el-form-item>
+              <p class="text-err theme-is-err">Error message</p>
+              <p class="text-help">Help text....</p>
+            </div>
+            <div class="form-group form-group--text form-group--text-login">
+              <label>Password</label>
+              <el-form-item prop="password">
+                <el-input name="password" :type="passwordType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="password" />
+              </el-form-item>
+              <p class="text-err theme-is-err">Error message</p>
+              <p class="text-help">Help text....</p>
+            </div>
+          </div>
+        </div>
+        <div class="l-sec sec_btnSet-login">
+          <div class="l-content_sec content_sec_btnSet-login">
+            <div class="form-group form-group--btn form-group--btn-login">
+              <!-- <button class="btn btn--cl-1 btn--size-1"　type='submit' name='action' value='login'>Login</button> -->
+              <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
+            </div>
+            <p class="links"><a class="textLink" href="/#/register">Sign up for Peacecoin</a></p>
+          </div>
+        </div>
+      </el-form>
+    </div>
+    <div id="footer">
+      <p class="text-credit">Peacecoin © 2018</p>
+    </div>
   </div>
 </template>
 
 <script>
-import { isvalidUsername } from '@/utils/validate'
+import { isValidUsername } from '@/utils/validate'
 import LangSelect from '@/components/LangSelect'
 import SocialSign from './socialsignin'
+import Lang from '../components/Lang'
+import LogoHeader from '../components/LogoHeader'
 
 export default {
-  components: { LangSelect, SocialSign },
+  components: { LangSelect, SocialSign, LogoHeader, Lang },
   name: 'login',
+  beforeCreate() {
+    document.body.className = 'peaceWallet no-login login'
+  },
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!isvalidUsername(value)) {
+      if (!isValidUsername(value)) {
         callback(new Error('Please enter the correct user name'))
       } else {
         callback()
       }
     }
     const validatePassword = (rule, value, callback) => {
-      if (value.length < 6) {
-        callback(new Error('The password can not be less than 6 digits'))
+      if (value.length < 4) {
+        callback(new Error('The password can not be less than 4 digits'))
       } else {
         callback()
       }
@@ -101,6 +107,7 @@ export default {
             this.$router.push({ path: '/' })
           }).catch(() => {
             this.loading = false
+            console.log('error failed authorization!!!')
           })
         } else {
           console.log('error submit!!')

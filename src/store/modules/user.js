@@ -86,9 +86,13 @@ const user = {
 
     // entry user
     RegisterByUsername({ commit }, userInfo) {
-      const username = userInfo.username.trim()
+      // const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
-        registerByUsername(username, userInfo.password).then(response => {
+        registerByUsername(
+          userInfo.username.trim(),
+          userInfo.email,
+          userInfo.password
+        ).then(response => {
           const data = response.data
           commit('SET_TOKEN', data.token)
           setToken(response.data.token)
