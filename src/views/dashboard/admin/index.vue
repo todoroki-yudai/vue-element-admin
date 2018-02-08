@@ -1,13 +1,15 @@
 <template>
-  <div class="dashboard-editor-container">
-    <github-corner></github-corner>
-
-    <panel-group @handleSetLineChartData="handleSetLineChartData"></panel-group>
-
-    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
-      <line-chart :chart-data="lineChartData"></line-chart>
-    </el-row>
-
+  <div id="mainContent"  role="main">
+    <action-header></action-header>
+    <div id="pageContent">
+      <h1 class="title_main is-bold">Home</h1>
+      <div class="l-sec sec_totalCoin">
+        <div class="l-content_sec">
+          <p class="coin coin--total"><span class="num coin__num">{{peaceCoinAmoun}}</span><span class="unit coin__unit">coin</span></p>
+          <!-- <a href="" class="btn btn--cl-1 btn--size-1"><span class="main">Send</span><span class="add"> Peace Coin</span></a> -->
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,6 +25,8 @@ import BarChart from './components/BarChart'
 import TransactionTable from './components/TransactionTable'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
+
+import ActionHeader from '../../layout/components/ActionHeader'
 
 // const lineChartData = {
 //   balances: {
@@ -50,21 +54,36 @@ export default {
     BarChart,
     TransactionTable,
     TodoList,
-    BoxCard
+    BoxCard,
+    ActionHeader
+  },
+  beforeCreate() {
+    document.body.className = 'peaceWallet logined home drawer drawer--left'
   },
   data() {
     return {
-      // lineChartData: lineChartData.balances
       lineChartData: {
         expectedData: [],
         actualData: []
-      }
+      },
+      peaceCoinAmoun: 100
     }
   },
   created() {
-    this.handleChartData()
+    this.handlerUserData()
+    // this.handleChartData()
   },
   methods: {
+    handlerUserData(type) {
+      this.loading = true
+      this.$store.dispatch('GetUserInfo').then(res => {
+        this.loading = false
+        this.peaceCoinAmoun = res.data.balance
+      }).catch((e) => {
+        this.loading = false
+        console.log(e)
+      })
+    },
     handleSetLineChartData(type) {
       this.handleChartData(type)
       // this.lineChartData = lineChartData[type]
@@ -73,7 +92,7 @@ export default {
       // TODO: change get data by type
       this.loading = true
       this.$store.dispatch('FetchUserBalanceList', {
-        starting_date: '2017-12-13',
+        start_date: '2017-12-13',
         end_date: '2018-01-12'
       }).then((res) => {
         this.loading = false
@@ -94,15 +113,3 @@ export default {
   }
 }
 </script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-.dashboard-editor-container {
-  padding: 32px;
-  background-color: rgb(240, 242, 245);
-  .chart-wrapper {
-    background: #fff;
-    padding: 16px 16px 0;
-    margin-bottom: 32px;
-  }
-}
-</style>
