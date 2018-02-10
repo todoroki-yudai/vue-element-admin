@@ -149,15 +149,15 @@ export default {
       }
     }
     const validatePassword = (rule, value, callback) => {
-      if (value.length < 6) {
-        callback(new Error('The password can not be less than 6 digits'))
+      if (value.length < 8) {
+        callback(new Error('The password can not be less than 8 digits'))
       } else {
         callback()
       }
     }
     const validateConfirmPassword = (rule, value, callback) => {
-      if (value.length < 6) {
-        callback(new Error('The password can not be less than 6 digits'))
+      if (value.length < 8) {
+        callback(new Error('The password can not be less than 8 digits'))
         return
       }
       if (this.registerForm.confirmPassword !== this.registerForm.password) {
