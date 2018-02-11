@@ -1,5 +1,19 @@
 <template>
-  <div id="pageContent" class="mainContent">
+  <div id="mainContent">
+
+    <div class="l-selector">
+      <ul class="list_selector">
+        <li class="list_selector__item list_selector__item_lang is-hide">
+          <div class="list_selector__item-show list_selector__item-show-lang"><svg class="icon_set-1"><use xlink:href="/static/img/icon_set-1.svg#icon_arrow_d-1"/></svg><span class="text">English</span></div>
+          <div class="list_selector__item-hide list_selector__item-hide-lang theme-is-hide">
+            <ul>
+              <li class="current"><span class="text">English</span></li>
+              <li><a href="#" class="text">Comming soon</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
 
     <lang></lang>
 
@@ -52,6 +66,7 @@
 import { isValidUsername } from '@/utils/validate'
 import LangSelect from '@/components/LangSelect'
 import SocialSign from './socialsignin'
+
 import Lang from '../components/Lang'
 import LogoHeader from '../components/LogoHeader'
 
