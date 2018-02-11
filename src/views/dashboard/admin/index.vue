@@ -66,7 +66,7 @@ export default {
         expectedData: [],
         actualData: []
       },
-      peaceCoinAmoun: 100
+      peaceCoinAmoun: 0
     }
   },
   created() {
