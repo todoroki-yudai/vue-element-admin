@@ -10,7 +10,7 @@
       <ul class="menu_peaceWallet__list">
         <li class="menu_peaceWallet__item"><a class="current textLink" href="#">Dashboard</a></li>
         <!-- <li class="menu_peaceWallet__item"><a class="textLink" href="#">Send Peace Coin</a></li> -->
-        <li class="menu_peaceWallet__item"><a class="textLink" href="/deposits">Deposit History</a></li>
+        <li class="menu_peaceWallet__item"><a class="textLink" href="/deposits/index">Deposit History</a></li>
       </ul>
     </div>
   </div>
