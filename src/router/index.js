@@ -41,17 +41,6 @@ export const constantRouterMap = [
       meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
     }]
   }
-  // {
-  //   path: '/documentation',
-  //   component: Layout,
-  //   redirect: '/documentation/index',
-  //   children: [{
-  //     path: 'index',
-  //     component: _import('documentation/index'),
-  //     name: 'documentation',
-  //     meta: { title: 'documentation', icon: 'documentation', noCache: true }
-  //   }]
-  // }
 ]
 
 export default new Router({
@@ -61,6 +50,17 @@ export default new Router({
 })
 
 export const asyncRouterMap = [
+  {
+    path: '/deposits',
+    component: Layout,
+    redirect: 'noredirect',
+    children: [{
+      path: 'index',
+      component: _import('deposits/index'),
+      name: 'deposits',
+      meta: { title: 'deposits', icon: 'theme', noCache: true }
+    }]
+  },
   {
     path: '/transactions',
     component: Layout,
