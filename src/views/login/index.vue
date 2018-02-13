@@ -51,7 +51,7 @@
               <!-- <button class="btn btn--cl-1 btn--size-1"　type='submit' name='action' value='login'>Login</button> -->
               <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
             </div>
-            <p class="links"><a class="textLink" href="/#/register">Sign up for Peacecoin</a></p>
+            <p class="links"><a class="textLink" href="/register">Sign up for Peacecoin</a></p>
           </div>
         </div>
       </el-form>

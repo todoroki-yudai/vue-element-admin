@@ -88,7 +88,7 @@
                 {{$t('register.register')}}
               </el-button>
             </div>
-            <p class="links"><a class="textLink" href="/#/login">Login for Peacecoin</a></p>
+            <p class="links"><a class="textLink" href="/login">Login for Peacecoin</a></p>
           </div>
         </div>
       </el-form>
